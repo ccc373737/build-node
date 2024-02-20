@@ -35,7 +35,7 @@ python3 -m pip install tqdm;
 python3 -m pip install stdiomask;
 python3 -m pip install requests;
 
-sudo apt install -y srceen;
+sudo apt install -y screen;
 
 # install OPI
 rm -rf OPI
