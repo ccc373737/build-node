@@ -35,6 +35,8 @@ python3 -m pip install tqdm;
 python3 -m pip install stdiomask;
 python3 -m pip install requests;
 
+sudo apt install -y srceen;
+
 # install OPI
 rm -rf OPI
 sudo apt install -y git
