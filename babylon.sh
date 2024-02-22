@@ -1,6 +1,9 @@
 #!/bin/bash
 nodeName=$1
 
+sudo apt update;
+sudo apt install snapd;
+
 snap remove go
 snap install go --classic
 
