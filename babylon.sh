@@ -56,7 +56,7 @@ Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 [Install]
 WantedBy=multi-user.target
 EOF
-
+snap install jq
 sudo -S systemctl daemon-reload
 sudo -S systemctl enable babylond
 sudo -S systemctl start babylond
