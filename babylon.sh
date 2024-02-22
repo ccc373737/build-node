@@ -1,14 +1,16 @@
 #!/bin/bash
 nodeName=$1
 
-sudo apt update;
+sudo apt update -y;
 sudo apt install -y snapd;
 
 snap remove go
+rm -rf go
 snap install go --classic
 
 # Clone project repository
-cd && rm -rf babylon
+rm -rf babylon
+rm -rf .babylond
 git clone https://github.com/babylonchain/babylon
 cd babylon
 git checkout v0.8.3
@@ -16,10 +18,11 @@ git checkout v0.8.3
 # Build binary
 make install
 
+export PATH=$PATH:/root/go/bin
 echo "export PATH=\$PATH:/root/go/bin" >> ~/.bashrc
 source ~/.bashrc
 
-babylond init '$nodeName' --chain-id bbn-test-3
+babylond init $nodeName --chain-id bbn-test-3
 
 wget https://github.com/babylonchain/networks/raw/main/bbn-test-3/genesis.tar.bz2
 tar -xjf genesis.tar.bz2 && rm genesis.tar.bz2
@@ -59,6 +62,7 @@ Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 [Install]
 WantedBy=multi-user.target
 EOF
+
 snap install jq
 sudo -S systemctl daemon-reload
 sudo -S systemctl enable babylond
