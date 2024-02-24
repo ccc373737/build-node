@@ -4,14 +4,17 @@ install_babylon_env() {
 
     snap remove go
     rm -rf go
-    snap install go --classic
+    sudo snap install go --classic --channel=1.21/stable
 
     # Clone project repository
     rm -rf babylon
     rm -rf .babylond
     git clone https://github.com/babylonchain/babylon
     cd babylon
-    git checkout v0.8.3
+    git checkout v0.8.4
+
+    sudo apt install -y make
+    sudo apt install -y gcc
 
     # Build binary
     make install
@@ -20,7 +23,9 @@ install_babylon_env() {
     echo "export PATH=\$PATH:/root/go/bin" >> ~/.bashrc
     source ~/.bashrc
 
-    babylond init '$node_name' --chain-id bbn-test-3
+    babylond init "$node_name" --chain-id bbn-test-3
+
+    sudo apt install -y bzip2
 
     wget https://github.com/babylonchain/networks/raw/main/bbn-test-3/genesis.tar.bz2
     tar -xjf genesis.tar.bz2 && rm genesis.tar.bz2
