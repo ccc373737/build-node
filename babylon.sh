@@ -3,10 +3,12 @@ install_babylon_env() {
     read -e -p "node_name: " node_name
 
     snap remove go
+    rm -rf go
     snap install go --classic
 
     # Clone project repository
-    cd && rm -rf babylon
+    rm -rf babylon
+    rm -rf .babylond
     git clone https://github.com/babylonchain/babylon
     cd babylon
     git checkout v0.8.3
@@ -14,6 +16,7 @@ install_babylon_env() {
     # Build binary
     make install
 
+    export PATH=$PATH:/root/go/bin
     echo "export PATH=\$PATH:/root/go/bin" >> ~/.bashrc
     source ~/.bashrc
 
