@@ -90,7 +90,7 @@ EOF
 
     babylond tx checkpointing create-validator validator.json \
     --chain-id="bbn-test-3" \
-    --gas="100000" \
+    --gas="110000" \
     --gas-adjustment="1.5" \
     --gas-prices="0.025ubbn" \
     --from=wallet
