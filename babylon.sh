@@ -16,6 +16,9 @@ install_babylon_env() {
     sudo apt install -y make
     sudo apt install -y gcc
 
+    sudo apt install -y make
+    sudo apt install -y gcc
+
     # Build binary
     make install
 
@@ -24,6 +27,8 @@ install_babylon_env() {
     source ~/.bashrc
 
     babylond init "$node_name" --chain-id bbn-test-3
+
+    sudo apt install -y bzip2
 
     sudo apt install -y bzip2
 
